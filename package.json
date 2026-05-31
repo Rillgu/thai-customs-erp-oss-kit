@@ -1,11 +1,20 @@
 {
   "name": "thai-customs-erp-oss-kit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Open workflow rules and maintainer checklists for Thai customs brokerage ERP systems.",
   "type": "module",
   "private": false,
+  "files": [
+    "src/",
+    "docs/",
+    "examples/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "exports": {
     ".": "./src/index.mjs",
+    "./rules/triage": "./src/rules/issueTriage.mjs",
     "./rules/workflow": "./src/rules/workflowRules.mjs"
   },
   "scripts": {

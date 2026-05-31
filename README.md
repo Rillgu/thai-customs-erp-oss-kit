@@ -1,5 +1,9 @@
 # Thai Customs ERP OSS Kit
 
+[![CI](https://github.com/Rillgu/thai-customs-erp-oss-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/Rillgu/thai-customs-erp-oss-kit/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/Rillgu/thai-customs-erp-oss-kit?include_prereleases)](https://github.com/Rillgu/thai-customs-erp-oss-kit/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Open workflow rules, validation checks, and maintainer runbooks for teams building customs brokerage and outsourced transport ERP systems in Thailand.
 
 This repository is intentionally data-free. It contains reusable patterns, tests, and documentation only. It does not include customer records, production databases, credentials, private documents, or proprietary deployment files.
@@ -8,6 +12,7 @@ This repository is intentionally data-free. It contains reusable patterns, tests
 
 - Executable workflow validation rules for customs jobs, declarations, outsourced transport, finance, and compliance handoffs.
 - Maintainer checklists for issue triage, pull request review, release readiness, and security review.
+- Privacy-aware issue triage helpers for maintainer automation.
 - Example tests that show how ERP teams can keep operational workflow rules stable across refactors.
 - Notes for multilingual systems that need Chinese, English, and Thai user-facing terminology.
 
@@ -28,23 +33,25 @@ npm test
 ```js
 import { readinessSummary, validateWorkflow } from "thai-customs-erp-oss-kit";
 
-const result = validateWorkflow({
+const workflow = {
   jobStatus: "clearance_ready",
   declarationStatus: "accepted",
   transportMode: "outsourced",
   carrierConfirmed: true,
   invoiceStatus: "draft",
   documentsVerified: true
-});
+};
 
+const result = validateWorkflow(workflow);
 console.log(result.ok);
-console.log(readinessSummary(result));
+console.log(readinessSummary(workflow));
 ```
 
 Run the executable example:
 
 ```bash
 node examples/basic-readiness.mjs
+node examples/issue-triage.mjs
 ```
 
 ## Scope
@@ -70,6 +77,10 @@ Out of scope:
 
 This repository is not legal advice. Customs, VAT, WHT, BOI, and transport rules change over time. Treat these rules as software patterns and verify production behavior with qualified local experts.
 
+## Maintainer Automation
+
+See [docs/codex-maintainer-automation.md](docs/codex-maintainer-automation.md) for the privacy-aware issue triage and PR review use cases this project is designed to support.
+
 ## Maintainer
 
 Primary maintainer: [@rillgu](https://github.com/rillgu)
@@ -77,3 +88,5 @@ Primary maintainer: [@rillgu](https://github.com/rillgu)
 ## Public Maintenance Evidence
 
 See [docs/public-maintenance-evidence.md](docs/public-maintenance-evidence.md). This project is new and does not claim broad adoption yet.
+
+For maintainer-support applications, see [docs/openai-codex-for-oss-application.md](docs/openai-codex-for-oss-application.md).

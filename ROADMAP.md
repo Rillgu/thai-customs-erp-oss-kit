@@ -24,6 +24,7 @@ This roadmap is intentionally scoped to reusable, data-free OSS assets.
 
 - Add examples for PR review prompts, issue triage summaries, and release-note generation.
 - Keep automation examples explicit about privacy, authorization, and synthetic data.
+- Add more deterministic checks before calling any LLM or API model.
 
 ## Not Planned
 

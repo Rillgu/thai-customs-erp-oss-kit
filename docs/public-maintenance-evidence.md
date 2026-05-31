@@ -12,6 +12,9 @@ This file tracks public evidence that reviewers and adopters can inspect.
 - CI: GitHub Actions workflow in `.github/workflows/ci.yml`
 - Release process: `docs/release-process.md`
 - Roadmap: `ROADMAP.md`
+- Maintainer automation use cases: `docs/codex-maintainer-automation.md`
+- Privacy review checklist: `docs/privacy-review-checklist.md`
+- Codex for OSS application evidence: `docs/openai-codex-for-oss-application.md`
 
 ## Evidence Still Needed
 
