@@ -1,0 +1,10 @@
+node_modules/
+coverage/
+.env
+.env.*
+*.log
+*.db
+uploads/
+private-assets/
+output/
+dist/
