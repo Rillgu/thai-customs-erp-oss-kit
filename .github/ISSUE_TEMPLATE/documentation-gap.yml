@@ -1,0 +1,21 @@
+name: Documentation gap
+description: Request a clarification or new maintainer guide.
+title: "[docs] "
+labels:
+  - documentation
+  - needs-triage
+body:
+  - type: textarea
+    id: gap
+    attributes:
+      label: What is unclear?
+      description: Point to the section or workflow that needs clearer documentation.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Suggested improvement
+      description: Keep examples synthetic and data-free.
+    validations:
+      required: false

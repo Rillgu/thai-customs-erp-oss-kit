@@ -26,7 +26,7 @@ npm test
 ## Example
 
 ```js
-import { validateWorkflow } from "./src/rules/workflowRules.mjs";
+import { readinessSummary, validateWorkflow } from "thai-customs-erp-oss-kit";
 
 const result = validateWorkflow({
   jobStatus: "clearance_ready",
@@ -38,6 +38,13 @@ const result = validateWorkflow({
 });
 
 console.log(result.ok);
+console.log(readinessSummary(result));
+```
+
+Run the executable example:
+
+```bash
+node examples/basic-readiness.mjs
 ```
 
 ## Scope
@@ -49,6 +56,7 @@ In scope:
 - Finance readiness checks
 - Document and compliance handoff rules
 - Maintainer automation examples
+- Multilingual workflow terminology
 
 Out of scope:
 
@@ -65,3 +73,7 @@ This repository is not legal advice. Customs, VAT, WHT, BOI, and transport rules
 ## Maintainer
 
 Primary maintainer: [@rillgu](https://github.com/rillgu)
+
+## Public Maintenance Evidence
+
+See [docs/public-maintenance-evidence.md](docs/public-maintenance-evidence.md). This project is new and does not claim broad adoption yet.

@@ -72,6 +72,51 @@ export function nextMaintainerChecks(workflow) {
   return result.errors.map((error) => `fix:${error.code}`);
 }
 
+export function readinessSummary(workflow) {
+  const result = validateWorkflow(workflow);
+  const blockedBy = [...new Set(result.errors.map((error) => error.field))];
+
+  return {
+    ready: result.ok,
+    blockedBy,
+    checkCount: result.errors.length,
+    nextChecks: nextMaintainerChecks(workflow)
+  };
+}
+
+export function validateDocumentPackage(documentPackage) {
+  const errors = [];
+  const requiredDocuments = Array.isArray(documentPackage.requiredDocuments)
+    ? documentPackage.requiredDocuments
+    : [];
+  const verifiedDocuments = new Set(
+    Array.isArray(documentPackage.verifiedDocuments) ? documentPackage.verifiedDocuments : []
+  );
+
+  if (requiredDocuments.length === 0) {
+    errors.push({
+      code: "required-documents-missing",
+      field: "requiredDocuments",
+      message: "document package must list required documents"
+    });
+  }
+
+  for (const documentName of requiredDocuments) {
+    if (!verifiedDocuments.has(documentName)) {
+      errors.push({
+        code: "document-not-verified",
+        field: "verifiedDocuments",
+        message: `${documentName} must be verified`
+      });
+    }
+  }
+
+  return {
+    ok: errors.length === 0,
+    errors
+  };
+}
+
 function requireEnum(errors, workflow, field, allowedValues) {
   if (!allowedValues.has(workflow[field])) {
     errors.push({

@@ -4,8 +4,13 @@
   "description": "Open workflow rules and maintainer checklists for Thai customs brokerage ERP systems.",
   "type": "module",
   "private": false,
+  "exports": {
+    ".": "./src/index.mjs",
+    "./rules/workflow": "./src/rules/workflowRules.mjs"
+  },
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "check": "npm test"
   },
   "keywords": [
     "customs",
@@ -14,5 +19,13 @@
     "logistics",
     "compliance"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rillgu/thai-customs-erp-oss-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Rillgu/thai-customs-erp-oss-kit/issues"
+  },
+  "homepage": "https://github.com/Rillgu/thai-customs-erp-oss-kit#readme",
   "license": "MIT"
 }
